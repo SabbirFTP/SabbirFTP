@@ -1,4 +1,4 @@
-# backup date: 28 Apr 2026, Tuesday
+# backup date: 30 Apr 2026
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -184,6 +184,18 @@ function crun() {
   # python3 main.py --repo ftpsofts/REPO_URL --branch BRANCH/NAME --only SPECIFIC_PATH_TO_CHECK
 }
 
+
+
+# ================================
+# 🤖 AUTO CODE REVIEW RUNNER FOR ARNAB
+# ================================
+function arnob() {
+  cra
+  echo "⚙️ Running Code Reviewer..."
+  python3 main.py --repo ftpsofts/Home_Chef_20_04_2026 --branch testmeF --only resources/js/themes/HomeChefTheme
+}
+
+
 # ================================
 # 🧠 AUTHORITY COUNTER SOLVER
 # ================================
@@ -212,3 +224,11 @@ function ccc() {
   echo "🤖 Launching Claude..."
   ANTHROPIC_AUTH_TOKEN="freecc" ANTHROPIC_BASE_URL="http://localhost:8082" claude --dangerously-skip-permissions
 }
+
+
+
+# OPEN CROME OFFICE PROFILE
+alias oc='google-chrome --profile-directory="Profile 2"'
+
+alias file='xdg-open .'
+
