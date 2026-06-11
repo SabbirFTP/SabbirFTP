@@ -1,4 +1,3 @@
-# backup date: 30 Apr 2026
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -170,7 +169,7 @@ alias python='python3'
 function cra() {
   cd ~/auto/code-review-agent || return
   echo "🐍 Activating virtual environment..."
-  source .virtual/bin/activate
+  source .venv/bin/activate
 }
 
 
@@ -184,6 +183,74 @@ function crun() {
   # python3 main.py --repo ftpsofts/REPO_URL --branch BRANCH/NAME --only SPECIFIC_PATH_TO_CHECK
 }
 
+# ================================
+# 🤖 AUTO CODE REVIEW RUNNER FOR SABBIR
+# ================================
+
+function sabbir() {
+
+    # Config
+    local repo_path="ftpsofts/Fintech_Point_Website"
+    local branch="mms-dev"
+    local file_path="resources/views/themes/standard"
+
+    # Activate virtual environment
+    cra || {
+        echo "Failed to activate virtual environment"
+        return 1
+    }
+
+    echo "================================="
+    echo "Running Code Review Agent"
+    echo "================================="
+    echo "Repo Path : $repo_path"
+    echo "Branch    : $branch"
+    echo "File Path : $file_path"
+    echo "Checking codes..."
+    echo
+
+    # Run script
+    python3 main.py \
+        --repo "$repo_path" \
+        --branch "$branch" \
+        --only "$file_path"
+}
+
+bappy() {
+    # Config
+    local repo_path="ftpsofts/graphql-faysal"
+    local branch="main"
+    local file_path="app"
+
+    # Activate virtual environment
+    cra || {
+        echo "Failed to activate virtual environment"
+        return 1
+    }
+
+    echo "================================="
+    echo "Running Code Review Agent"
+    echo "================================="
+    echo "Repo Path : $repo_path"
+    echo "Branch    : $branch"
+    echo "File Path : $file_path"
+    echo "Checking codes..."
+    echo
+
+    # Run script
+    python3 main.py \
+        --repo "$repo_path" \
+        --branch "$branch" \
+        --only "$file_path"
+}
+
+function alamin() {
+  cra
+  echo "⚙️ Running Code Reviewer..."
+  # python3 main.py --repo ftpsofts/Home-Chef-Cloud-by-Sabbir-x-Ashik --branch user --only lib/features/user
+  
+  python3 main.py --repo ftpsofts/FTP_softs_protfolio --branch alamin --only plugins
+}
 
 
 # ================================
@@ -192,8 +259,11 @@ function crun() {
 function arnob() {
   cra
   echo "⚙️ Running Code Reviewer..."
-  python3 main.py --repo ftpsofts/Home_Chef_20_04_2026 --branch testmeF --only resources/js/themes/HomeChefTheme
+  python3 main.py --repo ftpsofts/Home_Chef_20_04_2026 --branch testmeF --only resources/views/themes
 }
+
+# OPEN REPORT FOLDER
+alias report='xdg-open ~/auto/code-review-agent/reports'
 
 
 # ================================
@@ -232,3 +302,76 @@ alias oc='google-chrome --profile-directory="Profile 2"'
 
 alias file='xdg-open .'
 
+# OPEN BASHRC IN CODE
+alias rc='code ~/.bashrc'
+
+
+# function ar() {
+  # 设置 AgentRouter 的 API 基础 URL
+
+  # # 设置您的 AgentRouter API 密钥, 可以从 https://agentrouter.org/console/token 获取
+  # export ANTHROPIC_BASE_URL="https://agentrouter.org/v1"
+  # export ANTHROPIC_AUTH_TOKEN="sld3tk84oVTkDxkGfKeiN46A+gbx5o4="
+  # export ANTHROPIC_API_KEY="sk-BWbCAibKJjAxRkChSQ1o5PUqK2AMVph9GHimhDwBWwMDKJhv"z
+  # export ANTHROPIC_MODEL="claude-opus-4-6"
+  export ANTHROPIC_MODEL="claude-haiku-4-5-20251001"
+  # export CLAUDE_CODE_USE_AUTH_TOKEN="false"
+# }
+
+alias rcf='source ~/.bashrc'
+
+function zc() {
+  cd ~/auto/cracker || return
+
+  # ---------------- ENV CHECK ----------------
+  if [ ! -d "venv" ]; then
+    echo -e "\033[1;31m[ ERROR ]\033[0m Virtual environment not found!"
+    echo "Run: python3 -m venv venv"
+    return
+  fi
+
+  # ---------------- BOOT SEQUENCE ----------------
+  echo -e "\n\033[1;32m[ ZC ]\033[0m Initializing Zip Cracker Pro..."
+  sleep 0.2
+
+  echo -ne "[+] Boot sequence starting...\r"
+  sleep 0.2
+  echo -e "[✔] Boot sequence complete     "
+
+  echo -ne "[+] Injecting runtime environment...\r"
+  sleep 0.3
+  echo -e "[✔] Environment injected       "
+
+  echo -ne "[+] Loading cryptographic modules...\r"
+  sleep 0.3
+  echo -e "[✔] Modules loaded             "
+
+  echo -ne "[+] Activating AES engine...\r"
+  sleep 0.3
+  echo -e "[✔] AES engine online          "
+
+  echo -ne "[+] Preparing attack vectors...\r"
+  sleep 0.3
+  echo -e "[✔] Attack vectors ready       "
+
+  # ---------------- DIVIDER ----------------
+  echo -e "\n----------------------------------------"
+  echo -e "▄︻デ══━一💥  ZC ENGINE ONLINE  💥━══━"
+  echo -e "----------------------------------------"
+
+  # ---------------- VENV ACTIVATION ----------------
+  echo -e "\033[1;36m[ ENV ]\033[0m Activating virtual environment..."
+  source venv/bin/activate
+
+  sleep 0.2
+
+  echo -e "\033[1;32m[ READY ]\033[0m System ready. Awaiting target input...\n"
+
+  # ---------------- RUN ----------------
+  python zip_cracker_pro.py
+}
+
+# Added by Antigravity CLI installer
+export PATH="/home/sabbir/.local/bin:$PATH"
+alias ag='"/home/sabbir/applications/Antigravity IDE/antigravity-ide" --no-sandbox'
+alias agx='"/home/sabbir/applications/Antigravity/antigravity" --no-sandbox'
